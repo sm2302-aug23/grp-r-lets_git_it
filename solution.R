@@ -1,5 +1,10 @@
-library(tibble)
 library(tidyverse)
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(tibble)
+library(testthat, quietly = TRUE)
+
 # Task 1 ----------------------------------------------------------------------
 gen_collatz <- function(n) {
   if (n <= 0 || !is.integer(n)) {
@@ -23,4 +28,5 @@ for(i in 1:10000) {
   collatz_seq <- gen_collatz(i)
   collatz_df <- add_row(collatz_df, start = i, seq = list(collatz_seq))
 }
+
 head(collatz_df)
