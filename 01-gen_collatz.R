@@ -21,9 +21,12 @@ gen_collatz <- function(n) {
   return(collatz_seq)
 }
 
-collatz_df <- tibble(start = 1:10000, seq = list(rep(NA_real_, 1)),
-                     length = NA_real_, parity = NA_character_, 
+collatz_df <- tibble(start = 1:10000, 
+                     seq = list(rep(NA_real_, 1)),
+                     length = NA_real_, 
+                     parity = NA_character_, 
                      max_val = NA_real_)
+
 for(i in 1:10000) {
   collatz_seq <- gen_collatz(i)
   collatz_df[i, c("seq", "length", "parity", "max_val")] <- list(
@@ -33,6 +36,7 @@ for(i in 1:10000) {
     max(collatz_seq)
   )
 }
+
 head(collatz_df)
 print(collatz_df)
 
