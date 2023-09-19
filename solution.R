@@ -17,3 +17,10 @@ gen_collatz <- function(n) {
   }
   return(collatz_seq)
 }
+
+collatz_df <- tibble(start = integer(), seq = list())
+for(i in 1:10000) {
+  collatz_seq <- gen_collatz(i)
+  collatz_df <- add_row(collatz_df, start = i, seq = list(collatz_seq))
+}
+head(collatz_df)
