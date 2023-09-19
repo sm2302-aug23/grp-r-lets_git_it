@@ -22,10 +22,21 @@ gen_collatz <- function(n) {
   return(collatz_seq)
 }
 
-collatz_df <- tibble(start = integer(), seq = list())
+collatz_df <- tibble(start = 1:10000)
+collatz_df <- collatz_df %>%
+  rowwise() %>%
+  mutate(seq = list(gen_collatz(start)),
+         length = length(seq),
+         parity = ifelse(last(seq) %% 2 == 0, "Even", "Odd"),
+         max_val = max(seq))
+head(collatz_df)
+
+# Task 1 ---------------------------------------------------------
 for(i in 1:10000) {
   collatz_seq <- gen_collatz(i)
-  collatz_df <- add_row(collatz_df, start = i, seq = list(collatz_seq))
+  collatz_df <- add_row(collatz_df, start = i, seq = list(collatz_seq),
+                        length = length(collatz_seq),
+                        parity = ifelse(collatz_seq[length(collatz_seq)] %% 2== 0,
+                                        "Even", "Odd"),
+                        max_val = max(collatz_seq))
 }
-
-head(collatz_df)
