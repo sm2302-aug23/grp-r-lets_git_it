@@ -20,6 +20,11 @@ mode_backtrack <- function(seq) {
 }
 
 backtracks_df <- collatz_df %>%
-  filter(map_lgl(seq, mode_backtrack))
+  group_by(start) %>%
+  filter(any(sapply(seq, mode_backtrack))) %>%
+  ungroup()
 
 head(backtracks_df)
+
+#2 -------------------------------------------
+
