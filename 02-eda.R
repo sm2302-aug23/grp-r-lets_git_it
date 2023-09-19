@@ -1,3 +1,11 @@
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(tibble)
+library(testthat, quietly = TRUE)
+library(janitor)
+library(conflicted)
+
 gen_collatz <- function(n) {
   if (!is.numeric(n) || n <= 0 || !is.integer(n)) {
     stop("Input must be a positive integer.")
