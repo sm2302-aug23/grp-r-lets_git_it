@@ -27,7 +27,8 @@ collatz_df <- tibble(start = 1:10000, seq = list(rep(NA_real_, 1)),
 for(i in 1:10000) {
   collatz_seq <- gen_collatz(i)
   collatz_df[i, c("seq", "length", "parity", "max_val")] <- list(
-    list(collatz_seq), length(collatz_seq),
+    list(collatz_seq), 
+    length(collatz_seq),
     ifelse(i %% 2 == 0, "Even", "Odd"),
     max(collatz_seq)
   )
