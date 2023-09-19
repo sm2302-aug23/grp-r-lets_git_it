@@ -3,7 +3,8 @@ library(tidyr)
 library(dplyr)
 library(tibble)
 library(testthat, quietly = TRUE)
-
+library(janitor)
+library(conflicted)
 # Task 1 ----------------------------------------------------------------------
 gen_collatz <- function(n) {
   if (!is.numeric(n) || n <= 0 || !is.integer(n)) {
