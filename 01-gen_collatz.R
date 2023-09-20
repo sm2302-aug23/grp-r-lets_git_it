@@ -3,8 +3,6 @@ library(tidyr)
 library(dplyr)
 library(tibble)
 library(testthat, quietly = TRUE)
-library(janitor)
-library(conflicted)
 
 # Task 1 ----------------------------------------------------------------------
 gen_collatz <- function(n) {
