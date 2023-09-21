@@ -42,8 +42,7 @@ print(collatz_df)
 
 top10longest <- collatz_df %>%
   arrange(desc(length)) %>%
-  head(10)
-head(top10longest)
+  slice_head(n = 10)
 
 #2 -----------------------------------------------------------------
 max_val_int <- collatz_df %>%
