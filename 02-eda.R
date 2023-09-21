@@ -51,7 +51,7 @@ top10longest <- collatz_df_fixed %>%
   arrange(desc(length)) %>%
   head(10)
 
-View(top10longest)
+print(top10longest)
 
 #2 -----------------------------------------------------------------
 max_val_int <- collatz_df %>%
