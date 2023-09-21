@@ -106,3 +106,8 @@ max_val_int <- collatz_df %>%
   select(start, max_val)
 head(max_val_int)
 
+#Attempt 2 for 2.1 
+sorted_collatz_df <- collatz_df[order(-collatz_df$length), ]
+top10longest <- sorted_collatz_df[1:10, ]
+View(top10longest)
+

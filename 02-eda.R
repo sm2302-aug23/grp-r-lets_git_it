@@ -37,10 +37,6 @@ head(collatz_df)
 print(collatz_df)
 
 # Task 2 ------------------------------------------------------------
-# Attempt 2 for #1 
-sorted_collatz_df <- collatz_df[order(-collatz_df$length), ]
-top10longest <- sorted_collatz_df[1:10, ]
-View(top10longest)
 
 #1 ------------------------------------------------------------------
 collatz_df_fixed <- collatz_df %>%
