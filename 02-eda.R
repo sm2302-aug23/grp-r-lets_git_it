@@ -47,8 +47,8 @@ collatz_df_fixed <- collatz_df %>%
     max_val = as.numeric(max_val)
   )
 
-sorted_collatz_df <- collatz_df[order(-collatz_df$length), ]
-top10longest <- tail(sorted_collatz_df, 10)
+top10longest <- collatz_df %>%
+  top_n(10, length)
 
 print(top10longest)
 
