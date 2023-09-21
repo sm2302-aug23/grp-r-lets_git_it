@@ -42,6 +42,28 @@ print(collatz_df)
 
 
 # Task 2 
+# new for 02 moderated new 01
+gen_collatz <- function(n) {
+  if (n <= 0 || !is.integer(n)) {
+    stop("Input must be a positive integer.")
+  }
+  collatz_seq <- c(n)
+  while (n != 1) {
+    if (n %% 2 == 0) {
+      n <- n / 2
+    } else {
+      n <- 3 * n + 1
+    }
+    collatz_seq <- c(collatz_seq, n)
+  }
+  return(list(sequence = collatz_seq, individual_elements = collatz_seq))
+}
+
+result <- gen_collatz(10L)
+complete_sequence <- result$sequence
+individual_elements <- result$individual_elements
+
+# 1
 collatz_df_fixed <- collatz_df %>%
   mutate(
     seq = map(seq, as.numeric),
@@ -84,6 +106,3 @@ max_val_int <- collatz_df %>%
   select(start, max_val)
 head(max_val_int)
 
-
-
->>>>>>> Stashed changes
