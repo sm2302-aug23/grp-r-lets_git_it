@@ -20,16 +20,27 @@ gen_collatz <- function(n) {
     }
     collatz_seq <- c(collatz_seq, n)
   }
-  return(list(sequence = collatz_seq, individual_elements = collatz_seq))
+  return(collatz_seq)
 }
 
-result <- gen_collatz(10L)
-complete_sequence <- result$sequence
-individual_elements <- result$individual_elements
+collatz_df <- tibble(start = integer(), seq = list(), length = numeric(), 
+                     parity = character(), max_val = numeric())
 
-
+for (i in 1:10000) {
+  collatz_seq <- gen_collatz(i)
+  collatz_df <- add_row(collatz_df, start = i, seq = list(collatz_seq),
+                        length = length(collatz_seq), 
+                        parity = ifelse(i %% 2 == 0, "Even", "Odd"), 
+                        max_val = max(collatz_seq))
+}
+head(collatz_df)
+print(collatz_df)
 
 # Task 2 ------------------------------------------------------------
+# Attempt 2 for #1 
+sorted_collatz_df <- collatz_df[order(-collatz_df$length), ]
+top10longest <- sorted_collatz_df[1:10, ]
+View(top10longest)
 
 #1 ------------------------------------------------------------------
 collatz_df_fixed <- collatz_df %>%
@@ -45,4 +56,5 @@ top10longest <- collatz_df_fixed %>%
   head(10)
 
 print(top10longest)
+
 
