@@ -25,6 +25,7 @@ backtracks_df <- collatz_df %>%
   ungroup()
 
 head(backtracks_df)
+print(backtracks_df)
 
 #2 -------------------------------------------
 #For sequences that backtrack, what is the most frequently occurring number of times they go above their starting integer? $$`mode_backtrack`$$
@@ -41,3 +42,17 @@ mode_backtrack <- backtracks_df %>%
   pull(freq_above_start)
 
 print(mode_backtrack)
+
+#3 -----------------------------------------
+
+
+
+
+#4 -----------------------------------------
+
+even_odd_backtrack <- backtracks_df %>%
+  group_by(parity) %>%
+  summarize(count = n()) %>%
+  ungroup()
+
+print(even_odd_backtrack)
