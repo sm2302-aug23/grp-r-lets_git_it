@@ -5,6 +5,7 @@ library(dplyr)
 library(tibble)
 library(testthat, quietly = TRUE)
 library(purrr)
+
 # Task 1 ------------------------------------------------------------------
 gen_collatz <- function(n) {
   if (n <= 0 || !is.integer(n)) {
@@ -19,21 +20,13 @@ gen_collatz <- function(n) {
     }
     collatz_seq <- c(collatz_seq, n)
   }
-  return(collatz_seq)
+  return(list(sequence = collatz_seq, individual_elements = collatz_seq))
 }
 
-collatz_df <- tibble(start = integer(), seq = list(), length = numeric(), 
-                     parity = character(), max_val = numeric())
+result <- gen_collatz(10L)
+complete_sequence <- result$sequence
+individual_elements <- result$individual_elements
 
-for (i in 1:10000) {
-  collatz_seq <- gen_collatz(i)
-  collatz_df <- add_row(collatz_df, start = i, seq = list(collatz_seq),
-                        length = length(collatz_seq), 
-                        parity = ifelse(i %% 2 == 0, "Even", "Odd"), 
-                        max_val = max(collatz_seq))
-}
-head(collatz_df)
-print(collatz_df)
 
 
 # Task 2 ------------------------------------------------------------
