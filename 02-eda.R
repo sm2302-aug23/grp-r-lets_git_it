@@ -59,31 +59,3 @@ expect_is(collatz_df_fixed$max_val, "numeric")
 
 print(top10longest)
 
-#2 -----------------------------------------------------------------
-max_val_int <- collatz_df %>%
-  filter(max_val == max(max_val)) %>%
-  select(start, max_val)
-head(max_val_int)
-
-#3 ------------------------------------------------------------------
-
-# For even integers
-
-summary_stats <- collatz_df %>%
-  mutate(is_even = start %% 2 == 0) %>%
-  group_by(is_even) %>%
-  summarise(
-    avg_length = mean(length),
-    sd_length = sd(length)
-  )
-head(summary_stats)
-
-# For odd integers 
-
-summary_stats_odd <- collatz_df %>%
-  filter(start %% 2 == 1) %>%
-  summarise(
-    avg_length_odd = mean(length),
-    sd_length_odd = sd(length)
-  )
-head(summary_stats_odd)
