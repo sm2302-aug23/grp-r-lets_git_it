@@ -53,4 +53,33 @@ top10longest <- collatz_df_fixed %>%
 
 print(top10longest)
 
+#2 ------------------------------------------------------------------
+max_val_int <- collatz_df %>%
+  filter(max_val == max(max_val)) %>%
+  select(start, max_val)
+
+print(max_val_int)
+
+#3 ------------------------------------------------------------------
+
+# For even 
+
+summary_stats_even <- collatz_df %>%
+  mutate(is_even = start %% 2 == 0) %>%
+  group_by(is_even) %>%
+  summarise(
+    avg_length = mean(length),
+    sd_length = sd(length)
+  )
+print(summary_stats_even)
+
+# For odd 
+
+summary_stats_odd <- collatz_df %>%
+  filter(start %% 2 == 1) %>%
+  summarise(
+    avg_length_odd = mean(length),
+    sd_length_odd = sd(length)
+  )
+print(summary_stats_odd)
 
