@@ -22,7 +22,8 @@ a_backtrack <- function(seq) {
 backtracks_df <- collatz_df %>%
   group_by(start) %>%
   filter(any(sapply(seq, a_backtrack))) %>%
-  ungroup()
+  ungroup() %>%
+  select(start)
 
 head(backtracks_df)
 print(backtracks_df)
