@@ -46,9 +46,16 @@ collatz_df_fixed <- collatz_df %>%
     parity = as.character(parity),
     max_val = as.numeric(max_val)
   )
+
 top10longest <- collatz_df_fixed %>%
   arrange(desc(length)) %>%
   head(10)
+
+expect_equal(nrow(top10longest), 10L)
+expect_is(collatz_df_fixed$seq, "list")
+expect_is(collatz_df_fixed$length, "numeric")
+expect_is(collatz_df_fixed$parity, "character")
+expect_is(collatz_df_fixed$max_val, "numeric")
 
 print(top10longest)
 
