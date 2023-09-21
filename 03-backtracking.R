@@ -3,7 +3,7 @@
 #1 ----------------------------------------------
 #Starting integer for backtrack data frame
 
-(tibble)
+library(tibble)
 library(dplyr)
 
 a_backtrack <- function(seq) {
@@ -31,7 +31,7 @@ head(backtracks_df)
 print(backtracks_df)
 
 #2 -------------------------------------------
-#For sequences that backtrack, what is the most frequently occurring number of times they go above their starting integer? $$`mode_backtrack`$$
+#For sequences that backtrack, what is the most frequently occurring number of times they go above their starting integer
 
 mode_backtrack <- backtracks_df %>%
   group_by(start) %>%
@@ -44,7 +44,7 @@ print(mode_backtrack)
 
 
 #3 -----------------------------------------
-#maximum value reached after the first backtrack for these sequences?
+#maximum value reached after the first backtrack for these sequences
 
 max_after_backtrack <- max(backtracks_df$max_after_backtrack, na.rm = TRUE)
 
