@@ -33,3 +33,13 @@ for(i in 1:10000) {
 
 head(collatz_df)
 print(collatz_df)
+
+
+# Task 2 
+collatz_df_fixed <- collatz_df %>%
+  mutate(
+    seq = map(seq, as.numeric),
+    length = as.numeric(length),
+    parity = as.character(parity),
+    max_val = as.numeric(max_val)
+  )
