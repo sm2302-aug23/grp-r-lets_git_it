@@ -50,8 +50,10 @@ print(max_after_backtrack)
 #4 -----------------------------------------
 
 even_odd_backtrack <- backtracks_df %>%
-  group_by(parity) %>%
-  summarize(count = n()) %>%
-  ungroup()
+  group_by(is_even = start %% 2 == 0) %>%
+  summarise(frequency = n()) %>%
+  mutate(parity = ifelse(is_even, "Even", "Odd"))
+
+even_odd_backtrack <- even_odd_backtrack %>% select(parity, frequency)
 
 print(even_odd_backtrack)
