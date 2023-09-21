@@ -32,17 +32,16 @@ print(backtracks_df)
 #For sequences that backtrack, what is the most frequently occurring number of times they go above their starting integer? $$`mode_backtrack`$$
 
 
-mode_backtrack <- backtracks_df %>%
+mode_backtracks <- backtracks_df %>%
   group_by(start) %>%
-  summarize(freq_above_start = sum(unlist(seq) > start)) %>%
-  ungroup() %>%
-  group_by(freq_above_start) %>%
-  summarize(count = n()) %>%
-  arrange(desc(count)) %>%
-  head(1) %>%
-  pull(freq_above_start)
+  summarise(
+    most_common_count = max(table(sapply(seq, function(s) sum(s > start))))
+  )
 
-print(mode_backtrack)
+mode_backtracks <- mode_backtracks$most_common_count[which.max(mode_backtracks$most_common_count)]
+print(mode_backtracks)
+
+
 
 #3 -----------------------------------------
 
