@@ -53,9 +53,9 @@ print(max_after_backtrack)
 #4 -----------------------------------------
 #the frequency counts for even and odd backtracking integers
 
-even_frequency <- sum(backtracks_df$start %% 2 ==0)
-odd_frequency <- sum(backtracks_df$start %% 2 ==1)
+even_frequency <- sum(backtracks_df$start %% 2 == 0)
+odd_frequency <- sum(backtracks_df$start %% 2 == 1)
 
 even_odd_backtrack <- c(Even = even_frequency, Odd = odd_frequency)
 
-print(even_odd_counts)
+print(even_odd_backtrack)
