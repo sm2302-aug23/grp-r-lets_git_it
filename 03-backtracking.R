@@ -45,8 +45,9 @@ print(mode_backtrack)
 
 #3 -----------------------------------------
 
+max_after_backtrack <- max(backtracks_df$max_after_backtrack, na.rm = TRUE)
 
-
+print(max_after_backtrack)
 
 #4 -----------------------------------------
 
