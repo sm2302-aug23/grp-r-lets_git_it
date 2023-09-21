@@ -40,7 +40,6 @@ for(i in 1:10000) {
 head(collatz_df)
 print(collatz_df)
 
-<<<<<<< Updated upstream
 
 # Task 2 
 collatz_df_fixed <- collatz_df %>%
@@ -50,7 +49,6 @@ collatz_df_fixed <- collatz_df %>%
     parity = as.character(parity),
     max_val = as.numeric(max_val)
   )
-=======
 # task 2 ----------------------
 gen_collatz <- function(n) {
   if (n <= 0 || !is.integer(n)) {
