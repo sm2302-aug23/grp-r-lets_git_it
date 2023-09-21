@@ -46,9 +46,10 @@ collatz_df_fixed <- collatz_df %>%
     parity = as.character(parity),
     max_val = as.numeric(max_val)
   )
-
-top10longest <- collatz_df %>%
-  top_n(10, length)
+top10longest <- collatz_df_fixed %>%
+  arrange(desc(length)) %>%
+  head(10) %>%
+  select(start)
 
 print(top10longest)
 
