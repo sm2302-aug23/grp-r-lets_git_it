@@ -40,7 +40,7 @@ print(collatz_df)
 
 #1 ------------------------------------------------------------------
 
-top10longest <- collatz_df_fixed %>%
+top10longest <- collatz_df %>%
   arrange(desc(length)) %>%
   head(10) %>%
   select(start)
