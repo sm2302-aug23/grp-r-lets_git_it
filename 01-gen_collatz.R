@@ -28,8 +28,8 @@ for (i in 1:10000) {
   collatz_seq <- gen_collatz(i)
   collatz_df <- add_row(collatz_df, start = i, seq = list(collatz_seq),
                         length = length(collatz_seq), 
-                        parity = ifelse(collatz_seq[length(collatz_seq)] %% 2 == 0,
-                                        "Even", "Odd"), 
+                        parity = ifelse(i %% 2 == 0, "Even", "Odd"), 
                         max_val = max(collatz_seq))
 }
+head(collatz_df)
 print(collatz_df)
