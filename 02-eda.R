@@ -50,7 +50,11 @@ print(top10longest)
 #2 ------------------------------------------------------------------
 max_val_int <- collatz_df %>%
   filter(max_val == max(max_val)) %>%
-  select(start, max_val)
+  select(start)
+
+max_val_int <- max_val_int$start
+
+cat("starting integer with the highest maximum value:", max_val_int, "\n")
 
 print(max_val_int)
 
