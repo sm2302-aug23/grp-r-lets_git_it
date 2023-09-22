@@ -73,12 +73,5 @@ even_odd_stats <- collatz_df %>%
             even_odd_sd_len = sd(length)
   )
 
-even_avg_len <- even_odd_stats$even_odd_avg_len
-odd_avg_len <- even_odd_stats$even_odd_sd_len
-
-cat("even average length:", even_avg_len, "\n")
-cat("odd standard deviation:", odd_avg_len, "\n")
-
-print(even_avg_len)
-print(odd_avg_len)
+print(even_odd_stats)
 
