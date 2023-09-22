@@ -54,9 +54,16 @@ max_val_int <- collatz_df %>%
 
 max_val_int <- max_val_int$start
 
+max_val_row <- collatz_df %>%
+  filter(max_val == max(max_val))
+
+highest_max_val <- max_val_row$max_val
+
 cat("starting integer with the highest maximum value:", max_val_int, "\n")
+cat("highest maximum value:", highest_max_val, "\n")
 
 print(max_val_int)
+print(highest_max_val)
 
 #3 ------------------------------------------------------------------
 
