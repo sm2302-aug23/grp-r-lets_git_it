@@ -42,7 +42,8 @@ print(collatz_df)
 
 top10longest <- collatz_df %>%
   arrange(desc(length)) %>%
-  slice_head(n = 10)
+  head(10) %>%
+  select(start)
 
 print(top10longest)
 
