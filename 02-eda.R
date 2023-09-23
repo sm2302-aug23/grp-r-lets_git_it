@@ -42,7 +42,7 @@ print(collatz_df)
 
 top10longest <- collatz_df %>%
   arrange(desc(length)) %>%
-  head(10) %>%
+  head(11) %>%
   select(start)
 
 print(top10longest)
@@ -68,6 +68,8 @@ print(highest_max_val)
 #3 ------------------------------------------------------------------
 
 even_odd_stats <- collatz_df %>%
+  
+  
   group_by(parity) %>%
   summarise(even_odd_avg_len = mean(length),
             even_odd_sd_len = sd(length)
