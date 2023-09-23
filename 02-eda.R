@@ -43,9 +43,11 @@ sorted_collatz_df <- collatz_df %>%
   arrange(desc(length))
 
 top10longest <- head(sorted_collatz_df, 10) %>%
-  select(start)
+  select(start) 
+  
+top10longest_vector <- t(top10longest)
 
-print(top10longest)
+print(top10longest_vector)
 
 #2 ------------------------------------------------------------------
 max_val_int <- collatz_df %>%
