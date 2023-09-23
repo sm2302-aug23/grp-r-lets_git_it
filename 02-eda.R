@@ -67,13 +67,13 @@ print(highest_max_val)
 
 #3 ------------------------------------------------------------------
 
-even_odd_stats <- collatz_df %>%
-  
-  
-  group_by(parity) %>%
-  summarise(even_odd_avg_len = mean(length),
-            even_odd_sd_len = sd(length)
-  )
+even_collatz <- collatz_df %>%
+  filter(parity == "Even")
+odd_collatz <- collatz_df %>%
+  filter(parity == "Odd")
 
-print(even_odd_stats)
+even_odd_avg_len <- c(mean(even_collatz$length), mean(odd_collatz$length))
+even_odd_sd_len <- c(sd(even_collatz$length), sd(odd_collatz$length))
 
+print(even_odd_avg_len)
+print(even_odd_sd_len)
