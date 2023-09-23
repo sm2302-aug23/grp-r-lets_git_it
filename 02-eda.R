@@ -42,12 +42,12 @@ print(collatz_df)
 sorted_collatz_df <- collatz_df %>%
   arrange(desc(length))
 
-top10longest <- head(sorted_collatz_df, 10) %>%
+top10longest_matrix <- head(sorted_collatz_df, 10) %>%
   select(start) 
   
-top10longest_vector <- t(top10longest)
+top10longest <- t(top10longest_matrix)
 
-print(top10longest_vector)
+print(top10longest)
 
 #2 ------------------------------------------------------------------
 max_val_int <- collatz_df %>%
