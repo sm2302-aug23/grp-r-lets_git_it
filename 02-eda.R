@@ -39,10 +39,10 @@ print(collatz_df)
 # Task 2 ------------------------------------------------------------
 
 #1 ------------------------------------------------------------------
+sorted_collatz_df <- collatz_df %>%
+  arrange(desc(length))
 
-top10longest <- collatz_df %>%
-  arrange(desc(length)) %>%
-  head(10) %>%
+top10longest <- head(sorted_collatz_df, 10) %>%
   select(start)
 
 print(top10longest)
@@ -77,3 +77,4 @@ even_odd_sd_len <- c(sd(even_collatz$length), sd(odd_collatz$length))
 
 print(even_odd_avg_len)
 print(even_odd_sd_len)
+
