@@ -6,21 +6,21 @@
 library(tibble)
 library(dplyr)
 
-a_backtrack <- function(seq) {
+has_backtrack <- function(seq) {
   seq_length <- length(seq)
   if (seq_length < 3) {
     return(FALSE)
   }
-  # Initialize a flag variable
-  above_starting_twice <- FALSE
+
+  above_starting_value <- FALSE
   
-  # Iterate through the sequence starting from the second element
+# Iterate through the sequence starting from the second element
   for (i in 2:(seq_length - 1)) {
     if (seq[i] < seq[1] && seq[i + 1] > seq[i]) {
-      above_starting_twice <- TRUE
+      above_starting_value <- TRUE
     }
     
-    if (above_starting_twice && seq[i] > seq[1]) {
+    if (above_starting_value && seq[i] > seq[1]) {
       return(TRUE)  # The sequence has gone above the starting value more than once
     }
   }
@@ -32,7 +32,7 @@ a_backtrack <- function(seq) {
 
 backtracks_df <- collatz_df %>%
   group_by(start) %>%
-  filter(any(sapply(seq, a_backtrack))) %>%
+  filter(any(sapply(seq, has_backtrack))) %>%
   ungroup()
 
 head(backtracks_df)
