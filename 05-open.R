@@ -8,15 +8,22 @@ library(testthat, quietly = TRUE)
 # Task 5 ---------------------------------------------------------------------
 
 # Analysing the arithmetic progressions in 
-# stopping times of the Collatz Conjecture 
+# stopping times of the Collatz Conjecture. 
 
 # THE HYPOTHESIS
 
 # The starting integer can affect 
-# the number of steps it takes a sequence to reach one
+# the number of steps it takes a sequence to reach one.
 
 # 1) Odd number tend to produce a longer sequence (Especially prime numbers)
+#   When an odd integer is substituted in 3n+1, 
+#   it becomes larger, resulting in more iterations before reaching 1.
+
 # 2) Even number tend to produce shorter sequence 
+#   When an even integer is divided by 2, it immediately becomes smaller,
+#   which can lead to quicker convergence.
+
+# Data frame ----------------------------------------------------------------
 
 
 
