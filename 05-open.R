@@ -25,5 +25,13 @@ library(testthat, quietly = TRUE)
 
 # Data frame ----------------------------------------------------------------
 
+filtered_collatz_df <- collatz_df %>% 
+  filter(length > 100)
 
+length_above_100 <- filtered_collatz_df 
+
+length_above_100 <- length_above_100 %>%
+  select(-max_val, -seq)
+
+print(length_above_100)
 
