@@ -11,21 +11,29 @@ a_backtrack <- function(seq) {
   if (seq_length < 3) {
     return(FALSE)
   }
-#For-Loop
-  for (i in 2 :(seq_length - 1)) {
-    if (seq[i] < seq[1] && seq[i+1] > seq[i]) {
-      return(TRUE)
+  # Initialize a flag variable
+  above_starting_twice <- FALSE
+  
+  # Iterate through the sequence starting from the second element
+  for (i in 2:(seq_length - 1)) {
+    if (seq[i] < seq[1] && seq[i + 1] > seq[i]) {
+      above_starting_twice <- TRUE
+    }
+    
+    if (above_starting_twice && seq[i] > seq[1]) {
+      return(TRUE)  # The sequence has gone above the starting value more than once
     }
   }
   
+  # If the loop completes without returning TRUE, it means the condition was not met
   return(FALSE)
+  
 }
 
 backtracks_df <- collatz_df %>%
   group_by(start) %>%
   filter(any(sapply(seq, a_backtrack))) %>%
-  ungroup() %>%
-  select(start)
+  ungroup()
 
 head(backtracks_df)
 print(backtracks_df)
