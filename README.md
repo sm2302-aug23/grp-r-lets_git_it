@@ -1,5 +1,61 @@
+#### Contribution declaration
+
+-   Task 1: @author1
+-   Task 2: @author2
+-   Task 3: @author3
+-   Task 4: @author2
+-   Task 5: @author4
+-   Task 6: @author1
+-   README: @author3
+
+### Used packages 
+1. tidyverse
+2. tidyr
+3. dplyr
+4. tibble 
+5. ggplot2
+
 ## 1) Generating the Collatz Conjecture 
-For generating 
+
+
+As instructed, I am creating a function 'gen_collatz' to generate the Collatz
+sequence for a given positive integer 'n' and also implementing a safeguard to 
+handle invalid input values (non-positive integers). 
+
+```
+gen_collatz <- function(n) {
+# SAFEGUARDING
+  if (n <= 0 || !is.integer(n)) {
+    stop("Input must be a positive integer.")
+  }
+  
+  # 
+  collatz_seq <- c(n)
+  while (n != 1) {
+    if (n %% 2 == 0) {
+      n <- n / 2
+    } else {
+      n <- 3 * n + 1
+    }
+    collatz_seq <- c(collatz_seq, n)
+  }
+  return(collatz_seq)
+}
+
+collatz_df <- tibble(start = integer(), seq = list(), length = numeric(), 
+                     parity = character(), max_val = numeric())
+
+for (i in 1:10000) {
+  collatz_seq <- gen_collatz(i)
+  collatz_df <- add_row(collatz_df, start = i, seq = list(collatz_seq),
+                        length = length(collatz_seq), 
+                        parity = ifelse(i %% 2 == 0, "Even", "Odd"), 
+                        max_val = max(collatz_seq))
+}
+head(collatz_df)
+print(collatz_df)
+``` 
+
 ## 2) Exploratory data analysis 
 
 ## 3) Investigating "backtracking" in sequences
