@@ -23,7 +23,8 @@ library(testthat, quietly = TRUE)
 #   When an even integer is divided by 2, it immediately becomes smaller,
 #   which can lead to quicker convergence.
 
-# Data frame ----------------------------------------------------------------
+
+# Data frame of integers with stopping times more than 100 ------------------
 
 filtered_collatz_df <- collatz_df %>% 
   filter(length > 100)
@@ -34,4 +35,26 @@ length_above_100 <- length_above_100 %>%
   select(-max_val, -seq)
 
 print(length_above_100)
+
+# The amount of odd and even integers ---------------------------------------
+
+Odd_amount <- length_above_100 %>%
+  filter(parity == "Odd") %>%
+  summarise(
+    count = n()
+  )
+
+Even_amount <- length_above_100 %>%
+  filter(parity == "Even") %>%
+  summarise(
+    count = n()
+  )
+
+print(Odd_amount)
+print(Even_amount)
+
+Comparison_Odd_Even <- bind_rows(Odd_amount, Even_amount)
+
+print(Comparison_Odd_Even)
+
 
