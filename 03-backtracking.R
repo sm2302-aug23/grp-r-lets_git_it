@@ -39,7 +39,7 @@ head(backtracks_df)
 print(backtracks_df)
 
 #2 -------------------------------------------
-#For sequences that backtrack, what is the most frequently occurring number of times they go above their starting integer
+#The most frequently occurring number of times they go above their starting integer.
 
 mode_backtrack <- backtracks_df %>%
   group_by(start) %>%
@@ -56,6 +56,7 @@ print(mode_backtrack)
 
 max_after_backtrack <- pmax(backtracks_df$max_val)
 
+head(max_after_backtrack)
 print(max_after_backtrack)
 
 #4 -----------------------------------------
@@ -63,9 +64,6 @@ print(max_after_backtrack)
 
 even_frequency <- sum(backtracks_df$start %% 2 == 0)
 odd_frequency <- sum(backtracks_df$start %% 2 != 0)
-
-cat("Frequency count of even backtracking integers:", even_frequency, "\n")
-cat("Frequency count of odd backtracking integers:", odd_frequency, "\n")
 
 even_odd_backtrack <- c(even_frequency, odd_frequency)
 
