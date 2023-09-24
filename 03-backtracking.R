@@ -54,7 +54,7 @@ print(mode_backtrack)
 #3 -----------------------------------------
 #maximum value reached after the first backtrack for these sequences
 
-max_after_backtrack <- max(backtracks_df$max_after_backtrack)
+max_after_backtrack <- pmax(backtracks_df$max_val)
 
 print(max_after_backtrack)
 
