@@ -194,3 +194,9 @@ Although there are even integers producing large sequences, the amount of odd in
 
 
 ## 6) Creative visualisation challenge 
+
+For task 6, we were curious about how it task 5 would show on a graph. 
+
+We also wanted to try if we could try to do an interactive visualisation 
+that could allow for others to explore the Collatz Conjecture by 
+inputting their own starting integers. 
