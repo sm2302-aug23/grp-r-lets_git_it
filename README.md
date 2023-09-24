@@ -1,5 +1,5 @@
 ## 1) Generating the Collatz Conjecture 
-
+For generating 
 ## 2) Exploratory data analysis 
 
 ## 3) Investigating "backtracking" in sequences
