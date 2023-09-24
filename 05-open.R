@@ -15,13 +15,11 @@ library(testthat, quietly = TRUE)
 # The starting integer can affect 
 # the number of steps it takes a sequence to reach one.
 
-# 1) Odd number tend to produce a longer sequence (Especially prime numbers)
-#   When an odd integer is substituted in 3n+1, 
-#   it becomes larger, resulting in more iterations before reaching 1.
+# 1) Odd number tend to produce a longer sequence 
 
 # 2) Even number tend to produce shorter sequence 
-#   When an even integer is divided by 2, it immediately becomes smaller,
-#   which can lead to quicker convergence.
+
+# The findings should prove this hypothesis for it to be true.
 
 
 # Data frame of integers with stopping times more than 100 ------------------
@@ -45,4 +43,8 @@ odd_even_df <- length_above_100 %>%
   )
 
 print(odd_even_df)
+
+# from the odd_even_df data frame, it is shown that Odd integers
+# produce larger sequences compared to Even integers.
+# (2065 is more than 1719)
 
