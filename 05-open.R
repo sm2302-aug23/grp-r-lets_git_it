@@ -38,23 +38,11 @@ print(length_above_100)
 
 # The amount of odd and even integers ---------------------------------------
 
-Odd_amount <- length_above_100 %>%
-  filter(parity == "Odd") %>%
+odd_even_df <- length_above_100 %>%
+  group_by(parity) %>%
   summarise(
     count = n()
   )
 
-Even_amount <- length_above_100 %>%
-  filter(parity == "Even") %>%
-  summarise(
-    count = n()
-  )
-
-print(Odd_amount)
-print(Even_amount)
-
-Comparison_Odd_Even <- bind_rows(Odd_amount, Even_amount)
-
-print(Comparison_Odd_Even)
-
+print(odd_even_df)
 
