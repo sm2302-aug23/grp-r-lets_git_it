@@ -4,6 +4,15 @@ editor_options:
     wrap: 72
 ---
 
+[Collatz Conjecture] {#sec-collatz-conjecture}
+
+| Student ID \# | Name            |
+|---------------|-----------------|
+| 22B2046       | Syafiqah Raddin |
+| 22B2125       | Izznie Adanan   |
+| 22B2149       | Aqilah Rafidi   |
+| 22B9014       | Bibi Junaidi    |
+
 #### Contribution declaration
 
 -   Task 1: Izznie Adanan
@@ -81,7 +90,7 @@ head(collatz_df)
 6     6 <dbl [9]>      9 Even        16
 ```
 
-I realised that this would only show a 6 x 5 tibble. So,
+I realized that this would only show a 6 x 5 tibble. So,
 
 ```         
 > print(collatz_df)
@@ -334,7 +343,7 @@ odd integers produce larger sequences than even integers.
 
 library(ggplot2)
 
-As a continuation from task 5, we wondered how many integers would have
+1) As a continuation from task 5, we wondered how many integers would have
 a certain amount of sequence length. i.e. how frequent is there a
 sequence length of 100 or 150. So, that could be described in a
 histogram to visualize the distribution of Collatz sequence lengths for
@@ -349,7 +358,7 @@ ggplot(filtered_collatz_df, aes(x= length)) +
 
 ![](histogram.png)
 
-Still taking into consideration task 5, as parity is taken into account,
+2) Still taking into consideration task 5, as parity is taken into account,
 we actually wanted to see odd and even integers compared sequence
 length.
 
@@ -361,4 +370,35 @@ ggplot(filtered_collatz_df, aes(x = parity,
   labs(x = "Parity", y = "Sequence Length") +
   ggtitle("Sequence Lengths by Parity for Stopping Times > 100")
 ```
+
 ![](boxplot.png)
+
+3) Now, I want to try to see how often a number comes up in a sequence no matter the starting integer. 
+
+```
+specific_num <- 2:100
+number_counts <- sapply(specific_num, function(num) {
+  sum(sapply(collatz_df$seq, function(seq) sum(seq == num)))
+})
+
+number_counts_df <- data.frame(Number = specific_num, Frequency = number_counts)
+
+number_counts_long <- melt(number_counts_df, id.vars = "Number")
+
+ggplot(number_counts_long, aes(x = Number, 
+                               y = variable, 
+                               fill = value)) +
+  geom_tile() + 
+  labs(x = "Number", 
+       y = "Starting Integer", 
+       fill = "Frequency") +
+  scale_fill_gradient(low = "yellow", high = "red") + 
+  ggtitle("Frequency of Specific Numbers in Collatz Sequences") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+![](heatmap_2to100.png)
+
+I only took into consideration this range because a 2:500 heatmap: 
+![](heatmap_2to500.png) 
+showsthat the bigger the number the less occurence it shows. Which is obvious now because a Collatz Conjecture wants to approach 1.
+

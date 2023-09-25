@@ -67,20 +67,18 @@ print(odd_even_df)
 
 library(ggplot2)
 
-# As a continuation from task 5, we wondered how many integers would have 
+# 1) As a continuation from task 5, we wondered how many integers would have 
 # a certain amount of sequence length. i.e. how frequent is there a sequence 
 # length of 100 or 150. 
 # So, that could be described in a histogram to visualize the distribution of
 # Collatz sequence lengths for integers with stopping times greater than 100.
-
-# Now to create the histogram
 
 ggplot(filtered_collatz_df, aes(x= length)) +
   geom_histogram(binwidth = 1, fill = "cyan", color = "black") +
   labs(x = "Sequence Length", y = "Frequency") +
   ggtitle("Distribution of Sequence Length for Stopping Times >100")
 
-# Still taking into consideration task 5, as parity is taken into account, 
+# 2) Still taking into consideration task 5, as parity is taken into account, 
 # we actually wanted to see odd and even integers compared sequence length. 
 
 ggplot(filtered_collatz_df, aes(x = parity,
@@ -89,4 +87,32 @@ ggplot(filtered_collatz_df, aes(x = parity,
   geom_boxplot() +
   labs(x = "Parity", y = "Sequence Length") +
   ggtitle("Sequence Lengths by Parity for Stopping Times > 100")
+
+# 3) Now, I want to try to see how often a number comes up in a sequence no 
+# matter the starting integer. There is the obvious choice of 1, but there is 
+# a possibility of a number other than 1 is common. 
+
+# Iterating through the sequences and count the occurences of specified numbers
+
+specific_num <- 2:100
+number_counts <- sapply(specific_num, function(num) {
+  sum(sapply(collatz_df$seq, function(seq) sum(seq == num)))
+})
+
+number_counts_df <- data.frame(Number = specific_num, Frequency = number_counts)
+
+number_counts_long <- melt(number_counts_df, id.vars = "Number")
+
+ggplot(number_counts_long, aes(x = Number, 
+                               y = variable, 
+                               fill = value)) +
+  geom_tile() + 
+  labs(x = "Number", 
+       y = "Starting Integer", 
+       fill = "Frequency") +
+  scale_fill_gradient(low = "yellow", high = "red") + 
+  ggtitle("Frequency of Specific Numbers in Collatz Sequences") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
 
