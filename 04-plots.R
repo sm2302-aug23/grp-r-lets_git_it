@@ -68,7 +68,7 @@ ggplot(
   data    = backtracks_df,
   mapping = aes(x = start,
                 y = max_val,
-                colour = top_10)
+                fill = top_10)
           
 ) +
   geom_point() +
