@@ -294,6 +294,9 @@ From the outcome backtracking sequences more common among **odd** than even.
 
 
 
+
+
+
 3.  Create a boxplot comparing the distributions of sequence lengths for
     even and odd starting integers. Are there any noticeable
     differences?
@@ -308,11 +311,12 @@ ggplot(data = backtracks_df,
   labs(x = "Starting Integer (Even/Odd)", y = "Sequence Length") + 
   theme_minimal() + 
   ggtitle("Distribution of Sequence Lengths for Even and Odd Starting Integers") +
-  scale_x_discrete(labels = c("Even", "Odd"))
+  scale_x_discrete(labels = c("Odd", "Even"))
+ 
 ````
 Noticeable differences :
-- Even starting integer has longer upper whiskers compared to the Odd starting integer
-- Lower quartile, Median (Middle quartile) and Upper quartie are higher for even starting integer compared to of odd starting integers
+- Odd starting integers has longer upper whiskers compared to the Even starting integers
+- Lower quartile, Median (Middle quartile) and Upper quartie are higher for odd starting integer compared to of even starting integers
 
 ## 5) Open-ended exploration
 
