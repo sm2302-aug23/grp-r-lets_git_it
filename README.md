@@ -320,7 +320,7 @@ print(top_10_starting_integers_01)
 ```
 
  Below is graph:
- ![scatterplot 01](<img width="431" alt="scatterplot_01" src="https://github.com/sm2302-aug23/grp-r-lets_git_it/assets/141397360/11bcb272-275b-4808-8463-35194a2a6f68">)
+ ![](scatterplot_01.png)
 
 2. For the second part, since I have to highlight the top 10 starting   integers, we must create a new variable derived from the backtracks_df data frame.
 
