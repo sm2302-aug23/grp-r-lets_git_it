@@ -6,15 +6,17 @@ library(tibble)
 # task 4 -----------------------------------------------------------------
 
 #1 -----------------------------------------------------------------------  
+
+# scatterplot
 ggplot(
-  data = backtracks_df,
+  data    = backtracks_df,
   mapping = aes(x = start,
                 y = length)
 ) + geom_point() +
   labs(
     title = "Scatter plot 1",
-    x = "Starting Integers",
-    y = "Length of the sequence"
+    x     = "Starting Integers",
+    y     = "Length of the sequence"
   )
 
 # Identify the top 10 starting integers
@@ -35,6 +37,18 @@ print(top_10_starting_integers)
 # in the sequence on the vertical axis. 
 # Highlight the top 10 starting integers in a different color.
 
+ggplot(
+  data    = backtracks_df,
+  mapping = aes(x = start,
+                y = max_val)
+) +
+  geom_point(
+    
+  ) +
+  labs(
+    title    = "Scatter plot 2",
+    subtit  
+  )
 
 
 #3 -----------------------------------------------------------------------
