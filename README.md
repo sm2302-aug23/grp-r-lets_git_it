@@ -1,3 +1,9 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 #### Contribution declaration
 
 -   Task 1: Izznie Adanan
@@ -18,7 +24,9 @@
 
 ## 1) Generating the Collatz Conjecture
 
-As instructed, I am creating a function 'gen_collatz' to generate the Collatz sequence for a given positive integer 'n' and also implementing a safeguard to handle invalid input values (non-positive integers).
+As instructed, I am creating a function 'gen_collatz' to generate the
+Collatz sequence for a given positive integer 'n' and also implementing
+a safeguard to handle invalid input values (non-positive integers).
 
 ```         
 gen_collatz <- function(n) {
@@ -102,7 +110,8 @@ Now, we finally got the right tibble.
 
 1.  Creating data frame of backtracking within the collatz sequences :
 
-Filter out any sequence length that has less than 3 sequence since there is no backtracking occurs.
+Filter out any sequence length that has less than 3 sequence since there
+is no backtracking occurs.
 
 ```         
 has_backtrack <- function(seq) {
@@ -116,7 +125,8 @@ has_backtrack <- function(seq) {
 
 (i) Iterate through the sequence starting from the second element.
 (ii) The sequence has gone above the starting value more than once.
-(iii) If the loop completes without returning TRUE, it means the condition was not met.
+(iii) If the loop completes without returning TRUE, it means the
+      condition was not met.
 
 ```         
   for (i in 2:(seq_length - 1)) {
@@ -167,7 +177,8 @@ backtracks_df
 #> # ℹ 8,219 more rows
 ```
 
-2.  The most frequently occurring number of times they go above their starting integer.
+2.  The most frequently occurring number of times they go above their
+    starting integer.
 
 ```         
 mode_backtrack <- backtracks_df %>%
@@ -180,7 +191,8 @@ mode_backtrack <- mode_backtrack$most_common_count[which.max(mode_backtrack$most
 print(mode_backtrack)
 ```
 
-3.  The maximum value reached after the first backtrack for these sequences.
+3.  The maximum value reached after the first backtrack for these
+    sequences.
 
 Using the `pmax` to find the maximum value of every integers.
 
@@ -212,21 +224,27 @@ Output:
 
 ## 5) Open-ended exploration
 
-For task 5, we analysed the arithmetic progressions in the amount of stopping times of the Collatz Conjecture.
+For task 5, we analysed the arithmetic progressions in the amount of
+stopping times of the Collatz Conjecture.
 
-The hypothesis is that the starting integer can affect the number of steps a sequence takes to reach one.
+The hypothesis is that the starting integer can affect the number of
+steps a sequence takes to reach one.
 
 **1) Odd integers tend to produce a larger sequence**
 
-This is because when an odd integer is multiplied by 3 and added by 1, it becomes larger, resulting in more iterations before reaching 1.
+This is because when an odd integer is multiplied by 3 and added by 1,
+it becomes larger, resulting in more iterations before reaching 1.
 
 **2) Even integers tend to produce a smaller sequence.**
 
-This is because when an even integer is divided by 2, it immediately becomes smaller, which can lead to a quicker convergence.
+This is because when an even integer is divided by 2, it immediately
+becomes smaller, which can lead to a quicker convergence.
 
-Since we want to analyse large sequences, we focused on the length of sequences of more than 100. Hence, the **length_above_100** data frame.
+Since we want to analyse large sequences, we focused on the length of
+sequences of more than 100. Hence, the **length_above_100** data frame.
 
-Since we only want to compare the parity of even and odd, the odd_even_df data frame is formed.
+Since we only want to compare the parity of even and odd, the
+odd_even_df data frame is formed.
 
 ```         
 #> #A tibble: 2 × 2
@@ -236,31 +254,37 @@ Since we only want to compare the parity of even and odd, the odd_even_df data f
 #> 2 Odd     2065
 ```
 
-Although there are even integers producing large sequences, it is evident that the amount of odd integers (n = 2065) is more than the number of even integers (n = 1719).
+Although there are even integers producing large sequences, it is
+evident that the amount of odd integers (n = 2065) is more than the
+number of even integers (n = 1719).
 
-Therefore, the hypothesis of this finding is proven and it is true that odd integers produce larger sequences than even integers.
+Therefore, the hypothesis of this finding is proven and it is true that
+odd integers produce larger sequences than even integers.
 
 ## 6) Creative visualisation challenge
 
 library(ggplot2)
 
-As a continuation from task 5, we wondered how many integers would have 
-a certain amount of sequence length. i.e. how frequent is there a sequence 
-length of 100 or 150. 
-So, that could be described in a histogram to visualize the distribution of
-Collatz sequence lengths for integers with stopping times greater than 100.
+As a continuation from task 5, we wondered how many integers would have
+a certain amount of sequence length. i.e. how frequent is there a
+sequence length of 100 or 150. So, that could be described in a
+histogram to visualize the distribution of Collatz sequence lengths for
+integers with stopping times greater than 100.
 
-```
+```         
 ggplot(filtered_collatz_df, aes(x= length)) +
   geom_histogram(binwidth = 1, fill = "cyan", color = "black") +
   labs(x = "Sequence Length", y = "Frequency") +
   ggtitle("Distribution of Sequence Length for Stopping Times >100")
 ```
 
-Still taking into consideration task 5, as parity is taken into account, 
-we actually wanted to see odd and even integers compared sequence length. 
+![](histogram.png)
 
-```
+Still taking into consideration task 5, as parity is taken into account,
+we actually wanted to see odd and even integers compared sequence
+length.
+
+```         
 ggplot(filtered_collatz_df, aes(x = parity,
                                 y = length,
                                 fill = parity)) +
@@ -268,3 +292,4 @@ ggplot(filtered_collatz_df, aes(x = parity,
   labs(x = "Parity", y = "Sequence Length") +
   ggtitle("Sequence Lengths by Parity for Stopping Times > 100")
 ```
+![](boxplot.png)
