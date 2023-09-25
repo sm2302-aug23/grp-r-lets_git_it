@@ -99,3 +99,11 @@ ggplot(
 #3 -----------------------------------------------------------------------
 
 # Create a boxplot comparing sequence lengths for even and odd starting integers
+
+ggplot(data = backtracks_df, 
+       mapping = aes(x = factor(start %% 2 == 0),
+                     y = seq_length)) + 
+  geom_boxplot() +
+  labs(x = "Starting Integer (Even/Odd", y = "Sequence Length") + 
+  theme_minimal() + 
+  ggtitle("Distribution of Sequence Lengths for Even and Odd Starting Integers")
