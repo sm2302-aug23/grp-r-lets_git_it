@@ -43,8 +43,6 @@ top_10_starting_integers_02 <- backtracks_df %>%
   arrange(desc(total_max_val)) %>%
   select(start) %>%
   head(10)
-  
-# print the top 10 starting integers for the maximum value
 
 print(top_10_starting_integers_02)
 

@@ -335,17 +335,24 @@ Output:
 #>10  7423
 ```
 
- Below is graph:
+ Below is the graph:
  ![](scatterplot_01.png)
 
 
 
 2. For the second part, since I have to highlight the top 10 starting   integers, we must create a new variable derived from the backtracks_df data frame.
+```
+top_10_starting_integers_02 <- backtracks_df %>%
+  group_by(start) %>%
+  summarise(total_max_val = sum(max_val)) %>%
+  arrange(desc(total_max_val)) %>%
+  select(start) %>%
+  head(10)
 
-**R CODE**
+print(top_10_starting_integers_02)
+```
 
-
-After identifying the top 10 starting integers, we then have to highlight it in 10 distinct colours. 
+After identifying the top 10 starting integers, we then have to  highlight it in 10 distinct colours. 
 
 **R CODE**
 
