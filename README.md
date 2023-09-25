@@ -376,6 +376,7 @@ ggplot(data = backtracks_df,
 ```
 
 Below is the graph:
+
 ![](boxplot_03.png)
 
 
