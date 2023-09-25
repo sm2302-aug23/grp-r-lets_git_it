@@ -401,8 +401,6 @@ odd integers produce larger sequences than even integers.
 
 ## 6) Creative visualisation challenge
 
-library(ggplot2)
-
 1) As a continuation from task 5, we wondered how many integers would have
 a certain amount of sequence length. i.e. how frequent is there a
 sequence length of 100 or 150. So, that could be described in a
