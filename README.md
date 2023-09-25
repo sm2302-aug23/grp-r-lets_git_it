@@ -92,6 +92,7 @@ I realised that this would only show a 6 x 5 tibble. So,
 # ℹ Use `print(n = ...)` to see more rows
 ```
 Now, we finally got the right tibble. 
+
 ## 2) Exploratory data analysis 
 
 ## 3) Investigating "backtracking" in sequences
@@ -205,27 +206,22 @@ Output:
 
 ## 5) Open-ended exploration
 
-For task 5, we analysed the arithmetic progressions in the amount of stopping
-times of the Collatz Conjecture. 
+For task 5, we analysed the arithmetic progressions in the amount of stopping times of the Collatz Conjecture. 
 
-The hypothesis is that the starting integer can affect the number of steps it
-takes a sequence to reach one.
+The hypothesis is that the starting integer can affect the number of steps a sequence takes to reach one.
 
- 1) Odd integers tend to produce a larger sequence.
+ **1) Odd integers tend to produce a larger sequence**
 
 This is because when an odd integer is multiplied by 3 and added by 1, it 
 becomes larger, resulting in more iterations before reaching 1. 
 
- 2) Even integers tend to produce a smaller sequence. 
+ **2) Even integers tend to produce a smaller sequence.**
 
-This is because when an even integer is divided by 2, it immediately becomes 
-smaller, which can lead to a quicker convergence.
+This is because when an even integer is divided by 2, it immediately becomes smaller, which can lead to a quicker convergence.
 
-Since we want to analyse large sequences, we focused on length of sequences 
-more than 100. Hence, the *length_above_100* data frame. 
+Since we want to analyse large sequences, we focused on the length of sequences of more than 100. Hence, the **length_above_100** data frame. 
 
-Since we only want to compare the parity of even and odd, the odd_even_df data
-frame is formed. 
+Since we only want to compare the parity of even and odd, the odd_even_df data frame is formed. 
 
 ```
 #> #A tibble: 2 × 2
@@ -235,10 +231,9 @@ frame is formed.
 #> 2 Odd     2065
 ```
 
-Although there are even integers producing large sequences, the amount of odd 
-integers (n = 2065) is more than the number of even integers (n = 1719). 
-Therefore, the hypothesis of this finding is proven and it is true that odd
-integers produces larger sequences compared to even integers. 
+Although there are even integers producing large sequences, it is evident that the amount of odd integers (n = 2065) is more than the number of even integers (n = 1719). 
+
+Therefore, the hypothesis of this finding is proven and it is true that odd integers produce larger sequences than even integers. 
 
 ## 6) Creative visualisation challenge 
 
