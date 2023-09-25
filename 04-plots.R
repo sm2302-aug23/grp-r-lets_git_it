@@ -65,7 +65,7 @@ colour_palette <- c(
 # scatterplot 02 
 
 ggplot(
-  data    = collatz_df,
+  data    = backtracks_df,
   mapping = aes(x = start,
                 y = max_val,
                 colour = top_10)
@@ -77,7 +77,7 @@ ggplot(
     x        = "Starting integers",
     y        = "Maximum value reached in the sequence"
   ) +
-  scale_color_manual(values = colour_palette)
+  scale_color_manual( values = c("FALSE" = "gray", "TRUE" = colour_palette))
 
 
 #3 -----------------------------------------------------------------------
