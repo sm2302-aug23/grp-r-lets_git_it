@@ -408,7 +408,7 @@ histogram to visualize the distribution of Collatz sequence lengths for
 integers with stopping times greater than 100.
 
 ```         
-ggplot(filtered_collatz_df, aes(x= length)) +
+ggplot(filtered_collatz_df, aes(x = length)) +
   geom_histogram(binwidth = 1, fill = "cyan", color = "black") +
   labs(x = "Sequence Length", y = "Frequency") +
   ggtitle("Distribution of Sequence Length for Stopping Times >100")
