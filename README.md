@@ -317,13 +317,28 @@ top_10_starting_integers_01 <- backtracks_df %>%
 
 print(top_10_starting_integers_01)
 ```
+Output:
+```r
+#> top_10_starting_integers_01
+#> #A tibble: 10 × 1
+#>   start
+#>   <int>
+#> 1  6171
+#> 2  9257
+#> 3  6943
+#> 4  7963
+#> 5  8959
+#> 6  6591
+#> 7  9887
+#> 8  9897
+#> 9  7422
+#>10  7423
+```
 
  Below is graph:
  ![](scatterplot_01.png)
  
- After identifying the top 10:
- 
- ![](Scatter_plot_1(2).png)
+
 
 2. For the second part, since I have to highlight the top 10 starting   integers, we must create a new variable derived from the backtracks_df data frame.
 
