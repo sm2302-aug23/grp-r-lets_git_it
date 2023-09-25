@@ -109,4 +109,5 @@ ggplot(data = backtracks_df,
   labs(x = "Starting Integer (Even/Odd)", y = "Sequence Length") + 
   theme_minimal() + 
   ggtitle("Distribution of Sequence Lengths for Even and Odd Starting Integers") +
-  scale_x_discrete(labels = c("Even", "Odd"))
+  scale_x_discrete(labels = c("Odd", "Even"))
+ 
