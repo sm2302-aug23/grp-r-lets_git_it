@@ -8,7 +8,7 @@ editor_options:
 
 -   Task 1: Izznie Adanan
 -   Task 2: @author2
--   Task 3: @author3
+-   Task 3: Syafiqah Raddin
 -   Task 4: @author2
 -   Task 5: @author4
 -   Task 6: Izznie Adanan
@@ -106,6 +106,72 @@ Now, we finally got the right tibble.
 
 ## 2) Exploratory data analysis
 
+1. The top 10 starting integers.
+
+```
+sorted_collatz_df <- collatz_df %>%
+  arrange(desc(length))
+
+top10longest_matrix <- head(sorted_collatz_df, 10) %>%
+  select(start) 
+  
+top10longest <- t(top10longest_matrix)
+
+print(top10longest)
+```
+
+Output:
+```
+#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+#> start 6171 9257 6943 7963 8959 6591 9887 9897 7422  7423
+```
+
+2. Starting integer produces a sequence that reaches the highest maximum value.
+```
+max_val_int <- collatz_df %>%
+  filter(max_val == max(max_val)) %>%
+  select(start)
+
+max_val_int <- max_val_int$start
+
+print(max_val_int)
+```
+
+Output:
+```
+#>[1] 9663
+```
+
+3.  The average length and standard deviation of the sequence for even and odd starting integers.
+
+```
+even_collatz <- collatz_df %>%
+  filter(parity == "Even")
+odd_collatz <- collatz_df %>%
+  filter(parity == "Odd")
+```
+
+- To find the average length use the `mean` function for even and odd.
+```
+even_odd_avg_len <- c(mean(even_collatz$length), mean(odd_collatz$length))
+print(even_odd_avg_len)
+```
+
+Output:
+```
+#>[1] 79.5936 92.3396
+```
+- Then, using the `sd` function to calculate the standard deviation.
+```
+even_odd_sd_len <- c(sd(even_collatz$length), sd(odd_collatz$length))
+print(even_odd_sd_len)
+```
+
+Output:
+```
+#>[1] 45.10308 47.18387
+```
+
 ## 3) Investigating "backtracking" in sequences
 
 1.  Creating data frame of backtracking within the collatz sequences :
@@ -145,7 +211,7 @@ has_backtrack <- function(seq) {
 }
 ```
 
-Create a function of `backtracks_df` to create the data.
+Create an assignment of `backtracks_df` to create the data.
 
 ```         
 backtracks_df <- collatz_df %>%
@@ -159,7 +225,7 @@ print(backtracks_df)
 
 Output:
 
-```         
+```r         
 backtracks_df
 #> #A tibble: 8,229 × 5
 #>   start seq        length parity max_val
@@ -205,6 +271,8 @@ print(max_after_backtrack)
 
 4.  The frequency counts for even and odd backtracking integers.
 
+To find out what backtracking sequences more common among even or odd starting integers is by `sum`.
+
 ```         
 even_frequency <- sum(backtracks_df$start %% 2 == 0)
 odd_frequency <- sum(backtracks_df$start %% 2 != 0)
@@ -219,6 +287,7 @@ Output:
 ```         
 #> [1] 3943 4286
 ```
+From the outcome backtracking sequences more common among **odd** than even.
 
 ## 4) Visualisations
 
@@ -246,7 +315,7 @@ sequences of more than 100. Hence, the **length_above_100** data frame.
 Since we only want to compare the parity of even and odd, the
 odd_even_df data frame is formed.
 
-```         
+```r         
 #> #A tibble: 2 × 2
 #>  parity count
 #>  <chr>  <int>
