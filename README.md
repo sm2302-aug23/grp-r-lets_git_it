@@ -16,7 +16,7 @@ editor_options:
 #### Contribution declaration
 
 -   Task 1: Izznie Adanan
--   Task 2: @author2
+-   Task 2: Bibi Junaidi
 -   Task 3: Syafiqah Raddin
 -   Task 4: @author2
 -   Task 5: @author4
@@ -299,6 +299,28 @@ Output:
 From the outcome backtracking sequences more common among **odd** than even.
 
 ## 4) Visualisations
+
+
+
+3.  Create a boxplot comparing the distributions of sequence lengths for
+    even and odd starting integers. Are there any noticeable
+    differences?
+    
+```
+backtracks_df$seq_length <- sapply(backtracks_df$seq, length)
+
+ggplot(data = backtracks_df, 
+       mapping = aes(x = factor(start %% 2 == 0),
+                     y = seq_length)) + 
+  geom_boxplot() +
+  labs(x = "Starting Integer (Even/Odd)", y = "Sequence Length") + 
+  theme_minimal() + 
+  ggtitle("Distribution of Sequence Lengths for Even and Odd Starting Integers") +
+  scale_x_discrete(labels = c("Even", "Odd"))
+````
+Noticeable differences :
+- Even starting integer has longer upper whiskers compared to the Odd starting integer
+- Lower quartile, Median (Middle quartile) and Upper quartie are higher for even starting integer compared to of odd starting integers
 
 ## 5) Open-ended exploration
 
