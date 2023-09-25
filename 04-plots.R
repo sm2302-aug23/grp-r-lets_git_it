@@ -27,11 +27,9 @@ top_10_starting_integers <- backtracks_df %>%
   group_by(start) %>%
   summarise(total_length = sum(length)) %>%
   arrange(desc(total_length)) %>%
-  select(start)  # i think u missed %>% here
+  select(start) %>%  
   head(10)
 
-# Print the top 10 starting integers
-  
 print(top_10_starting_integers)
 
 
