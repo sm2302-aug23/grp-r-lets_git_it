@@ -161,7 +161,7 @@ contain the code for each of the tasks listed above. Note that the
 autograder will check only Tasks 1--3.
 
 | Task | Filename            | Contains                                                                    |
-|--------------:|:--------------|:-----------------------------------------|
+|-----------------:|:-----------------|:------------------------------------|
 |    1 | `01-gen_collatz.R`  | `gen_collatz()` function and `collatz_df`                                   |
 |    2 | `02-eda.R`          | `top10longest`, `max_Val_int`, `even_odd_avg_len`, `even_odd_sd_len`        |
 |    3 | `03-backtracking.R` | `backtracks_df`, `mode_backtrack`, `max_after_backtrack`, `even_odd_sd_len` |

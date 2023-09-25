@@ -4,6 +4,15 @@ editor_options:
     wrap: 72
 ---
 
+[Collatz Conjecture] {#sec-collatz-conjecture}
+
+| Student ID \# | Name            |
+|---------------|-----------------|
+| 22B2046       | Syafiqah Raddin |
+| 22B2125       | Izznie Adanan   |
+| 22B2149       | Aqilah Rafidi   |
+| 22B9014       | Bibi Junaidi    |
+
 #### Contribution declaration
 
 -   Task 1: Izznie Adanan
@@ -81,7 +90,7 @@ head(collatz_df)
 6     6 <dbl [9]>      9 Even        16
 ```
 
-I realised that this would only show a 6 x 5 tibble. So,
+I realized that this would only show a 6 x 5 tibble. So,
 
 ```         
 > print(collatz_df)
@@ -292,4 +301,7 @@ ggplot(filtered_collatz_df, aes(x = parity,
   labs(x = "Parity", y = "Sequence Length") +
   ggtitle("Sequence Lengths by Parity for Stopping Times > 100")
 ```
+
 ![](boxplot.png)
+
+Now, I want to try to make 
