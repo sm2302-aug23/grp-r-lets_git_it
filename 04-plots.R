@@ -30,7 +30,7 @@ top_10_starting_integers_01 <- backtracks_df %>%
   select(start) %>%  
   head(10)
 
-print(top_10_starting_integers)
+print(top_10_starting_integers_01)
 
 #2 -----------------------------------------------------------------------
 
