@@ -14,18 +14,17 @@ has_backtrack <- function(seq) {
 
   above_starting_value <- FALSE
   
-# Iterate through the sequence starting from the second element
+
   for (i in 2:(seq_length - 1)) {
     if (seq[i] < seq[1] && seq[i + 1] > seq[i]) {
       above_starting_value <- TRUE
     }
     
     if (above_starting_value && seq[i] > seq[1]) {
-      return(TRUE)  # The sequence has gone above the starting value more than once
+      return(TRUE)
     }
   }
   
-  # If the loop completes without returning TRUE, it means the condition was not met
   return(FALSE)
   
 }

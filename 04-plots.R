@@ -31,17 +31,16 @@ top_10_starting_integers_01 <- backtracks_df %>%
   head(10)
 
 print(top_10_starting_integers)
-<<<<<<< Updated upstream
-=======
-=======
+
   select(start) %>%
   head(10)
 
 # Print the top 10 starting integers
   
 print(top_10_starting_integers_01)
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
+print(top_10_starting_integers_01)
+
 
 #2 -----------------------------------------------------------------------
 
