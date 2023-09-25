@@ -190,10 +190,9 @@ has_backtrack <- function(seq) {
   above_starting_value <- FALSE
 ```
 
-(i) Iterate through the sequence starting from the second element.
-(ii) The sequence has gone above the starting value more than once.
-(iii) If the loop completes without returning TRUE, it means the
-      condition was not met.
+- Iterate through the sequence starting from the second element.
+- The sequence has gone above the starting value more than once.
+- If the loop completes without returning TRUE, it means the condition was not met.
 
 ```         
   for (i in 2:(seq_length - 1)) {
@@ -321,6 +320,9 @@ print(top_10_starting_integers_01)
 
  Below is graph:
  ![](scatterplot_01.png)
+ 
+ After identifying the top 10:
+ ![](Scatter_plot_1(2).png)
 
 2. For the second part, since I have to highlight the top 10 starting   integers, we must create a new variable derived from the backtracks_df data frame.
 
