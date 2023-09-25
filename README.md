@@ -23,14 +23,6 @@ editor_options:
 -   Task 6: Izznie Adanan
 -   README: Syafiqah Raddin, Izznie Adanan, Aqilah Rafidi, Bibi Junaidi
 
-### Used packages
-
-1.  tidyverse
-2.  tidyr
-3.  dplyr
-4.  tibble
-5.  ggplot2
-
 ## 1) Generating the Collatz Conjecture
 
 As instructed, I am creating a function 'gen_collatz' to generate the
