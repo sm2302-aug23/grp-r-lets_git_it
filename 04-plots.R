@@ -31,6 +31,17 @@ top_10_starting_integers_01 <- backtracks_df %>%
   head(10)
 
 print(top_10_starting_integers)
+<<<<<<< Updated upstream
+=======
+=======
+  select(start) %>%
+  head(10)
+
+# Print the top 10 starting integers
+  
+print(top_10_starting_integers_01)
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 #2 -----------------------------------------------------------------------
 
@@ -47,7 +58,11 @@ top_10_starting_integers_02 <- backtracks_df %>%
 
 print(top_10_starting_integers_02)
 
-# create 10 distinct colours 
+# create new variable 
+backtracks_df <- backtracks_df %>%
+  mutate(top_10 = start %in% top_10_starting_integers_02$start)
+
+# create 10 distinct colours ****IGNORE UNRELATED WILL FIGURE****
 
 top_10_colors <- c(
   "start_int_1" = "pink",
@@ -68,8 +83,7 @@ ggplot(
   data = backtracks_df,
   mapping = aes(x = start,
                 y = max_val,
-                color = factor(start, levels = top_10_starting_integers_02$start)
-                )
+                color = top_10)
           
 ) +
   geom_point(
@@ -78,9 +92,9 @@ ggplot(
   labs(
     title = "Scatter plot 2",
     x = "Starting integers",
-    y = "Max value reached in the sequence"
+    y = "Maximum value reached in the sequence"
   ) +
-  scale_color_manual(values = top_10_colors)
+  scale_color_manual(values = c("FALSE" = "darkgray", "TRUE" = "pink"))
 
 
 #3 -----------------------------------------------------------------------
