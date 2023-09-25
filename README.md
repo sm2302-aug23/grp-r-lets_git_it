@@ -421,6 +421,8 @@ ggplot(number_counts_long, aes(x = Number,
 ![](heatmap-2to100.png)
 
 I only took into consideration this range because a 2:500 heatmap: 
+
 ![](heatmap_2to500.png) 
-showsthat the bigger the number the less occurence it shows. Which is obvious now because a Collatz Conjecture wants to approach 1.
+
+shows that the bigger the number the less occurence it shows. Which is obvious now because a Collatz Conjecture wants to approach 1.
 
