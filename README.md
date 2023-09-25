@@ -373,7 +373,12 @@ ggplot(data = backtracks_df,
   ggtitle("Distribution of Sequence Lengths for Even and Odd Starting Integers") +
   scale_x_discrete(labels = c("Odd", "Even"))
  
-````
+```
+
+Below is the graph:
+![](boxplot_03.png)
+
+
 Noticeable differences :
 - Odd starting integers has longer upper whiskers compared to the Even starting integers
 - Lower quartile, Median (Middle quartile) and Upper quartie are higher for odd starting integer compared to of even starting integers
