@@ -27,22 +27,10 @@ top_10_starting_integers_01 <- backtracks_df %>%
   group_by(start) %>%
   summarise(total_length = sum(length)) %>%
   arrange(desc(total_length)) %>%
-<<<<<<< Updated upstream
   select(start) %>%  
   head(10)
 
 print(top_10_starting_integers)
-=======
-  select(start) %>%
-  head(10)
-
-# Print the top 10 starting integers
-  
-print(top_10_starting_integers_01)
->>>>>>> Stashed changes
-
-backtracks_df <- backtracks_df %>%
-  mutate(top_10 = start %in% top_10_starting_integers_02$start)
 
 #2 -----------------------------------------------------------------------
 
