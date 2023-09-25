@@ -30,16 +30,22 @@ top_10_starting_integers_01 <- backtracks_df %>%
   select(start) %>%  
   head(10)
 
-print(top_10_starting_integers)
-
-  select(start) %>%
-  head(10)
-
-# Print the top 10 starting integers
-  
 print(top_10_starting_integers_01)
 
-print(top_10_starting_integers_01)
+# Add numbers
+backtracks_df$highlight <- backtracks_df$start %in% top_10_starting_integers_01$start
+
+ggplot(
+  data = backtracks_df,
+  mapping = aes(x = start,
+                y = length)
+) + geom_point() +
+  geom_text(aes(label = ifelse(highlight, as.character(start), "")), vjust = -0.5) +
+  labs(
+    title = "Scatter plot 1",
+    x = "Starting Integers",
+    y = "Length of the sequence"
+  )
 
 
 #2 -----------------------------------------------------------------------
