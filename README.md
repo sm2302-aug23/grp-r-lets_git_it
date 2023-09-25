@@ -5,23 +5,22 @@
 -   Task 3: @author3
 -   Task 4: @author2
 -   Task 5: @author4
--   Task 6: Izznie Adanan 
+-   Task 6: Izznie Adanan
 -   README: @author3
 
-### Used packages 
-1. tidyverse
-2. tidyr
-3. dplyr
-4. tibble 
-5. ggplot2
+### Used packages
 
-## 1) Generating the Collatz Conjecture 
+1.  tidyverse
+2.  tidyr
+3.  dplyr
+4.  tibble
+5.  ggplot2
 
-As instructed, I am creating a function 'gen_collatz' to generate the Collatz
-sequence for a given positive integer 'n' and also implementing a safeguard to 
-handle invalid input values (non-positive integers). 
+## 1) Generating the Collatz Conjecture
 
-```
+As instructed, I am creating a function 'gen_collatz' to generate the Collatz sequence for a given positive integer 'n' and also implementing a safeguard to handle invalid input values (non-positive integers).
+
+```         
 gen_collatz <- function(n) {
 # SAFEGUARDING
   if (n <= 0 || !is.integer(n)) {
@@ -57,9 +56,11 @@ for (i in 1:10000) {
 }
 head(collatz_df)
 print(collatz_df)
-``` 
-This would output:
 ```
+
+This would output:
+
+```         
 head(collatz_df)
 # A tibble: 6 × 5
   start seq       length parity max_val
@@ -71,9 +72,10 @@ head(collatz_df)
 5     5 <dbl [6]>      6 Odd         16
 6     6 <dbl [9]>      9 Even        16
 ```
-I realised that this would only show a 6 x 5 tibble. So, 
 
-```
+I realised that this would only show a 6 x 5 tibble. So,
+
+```         
 > print(collatz_df)
 # A tibble: 10,000 × 5
    start seq        length parity max_val
@@ -91,17 +93,18 @@ I realised that this would only show a 6 x 5 tibble. So,
 # ℹ 9,990 more rows
 # ℹ Use `print(n = ...)` to see more rows
 ```
-Now, we finally got the right tibble. 
 
-## 2) Exploratory data analysis 
+Now, we finally got the right tibble.
+
+## 2) Exploratory data analysis
 
 ## 3) Investigating "backtracking" in sequences
 
-1. Creating data frame of backtracking within the collatz sequences :
+1.  Creating data frame of backtracking within the collatz sequences :
 
-Filter out any sequence length that has less than 3 sequence since there is no 
-backtracking occurs.
-```
+Filter out any sequence length that has less than 3 sequence since there is no backtracking occurs.
+
+```         
 has_backtrack <- function(seq) {
   seq_length <- length(seq)
   if (seq_length < 3) {
@@ -113,9 +116,9 @@ has_backtrack <- function(seq) {
 
 (i) Iterate through the sequence starting from the second element.
 (ii) The sequence has gone above the starting value more than once.
-(iii) If the loop completes without returning TRUE, it means the condition was 
-not met.
-```
+(iii) If the loop completes without returning TRUE, it means the condition was not met.
+
+```         
   for (i in 2:(seq_length - 1)) {
     if (seq[i] < seq[1] && seq[i + 1] > seq[i]) {
       above_starting_value <- TRUE
@@ -133,7 +136,8 @@ not met.
 ```
 
 Create a function of `backtracks_df` to create the data.
-```
+
+```         
 backtracks_df <- collatz_df %>%
   group_by(start) %>%
   filter(any(sapply(seq, has_backtrack))) %>%
@@ -144,7 +148,8 @@ print(backtracks_df)
 ```
 
 Output:
-```
+
+```         
 backtracks_df
 #> #A tibble: 8,229 × 5
 #>   start seq        length parity max_val
@@ -162,10 +167,9 @@ backtracks_df
 #> # ℹ 8,219 more rows
 ```
 
-2. The most frequently occurring number of times they go above their starting 
-integer.
+2.  The most frequently occurring number of times they go above their starting integer.
 
-```
+```         
 mode_backtrack <- backtracks_df %>%
   group_by(start) %>%
   summarise(
@@ -176,19 +180,20 @@ mode_backtrack <- mode_backtrack$most_common_count[which.max(mode_backtrack$most
 print(mode_backtrack)
 ```
 
-3. The maximum value reached after the first backtrack for these sequences.
+3.  The maximum value reached after the first backtrack for these sequences.
 
 Using the `pmax` to find the maximum value of every integers.
-```
+
+```         
 max_after_backtrack <- pmax(backtracks_df$max_val)
 head(max_after_backtrack)
 
 print(max_after_backtrack)
 ```
 
-4. The frequency counts for even and odd backtracking integers.
+4.  The frequency counts for even and odd backtracking integers.
 
-```
+```         
 even_frequency <- sum(backtracks_df$start %% 2 == 0)
 odd_frequency <- sum(backtracks_df$start %% 2 != 0)
 
@@ -198,37 +203,32 @@ print(even_odd_backtrack)
 ```
 
 Output:
-```
+
+```         
 #> [1] 3943 4286
 ```
 
-## 4) Visualisations 
+## 4) Visualisations
 
 ## 5) Open-ended exploration
 
-For task 5, we analysed the arithmetic progressions in the amount of stopping 
-times of the Collatz Conjecture. 
+For task 5, we analysed the arithmetic progressions in the amount of stopping times of the Collatz Conjecture.
 
-The hypothesis is that the starting integer can affect the number of steps a 
-sequence takes to reach one.
+The hypothesis is that the starting integer can affect the number of steps a sequence takes to reach one.
 
- **1) Odd integers tend to produce a larger sequence**
+**1) Odd integers tend to produce a larger sequence**
 
-This is because when an odd integer is multiplied by 3 and added by 1, it 
-becomes larger, resulting in more iterations before reaching 1. 
+This is because when an odd integer is multiplied by 3 and added by 1, it becomes larger, resulting in more iterations before reaching 1.
 
- **2) Even integers tend to produce a smaller sequence.**
+**2) Even integers tend to produce a smaller sequence.**
 
-This is because when an even integer is divided by 2, it immediately becomes 
-smaller, which can lead to a quicker convergence.
+This is because when an even integer is divided by 2, it immediately becomes smaller, which can lead to a quicker convergence.
 
-Since we want to analyse large sequences, we focused on the length of sequences 
-of more than 100. Hence, the **length_above_100** data frame. 
+Since we want to analyse large sequences, we focused on the length of sequences of more than 100. Hence, the **length_above_100** data frame.
 
-Since we only want to compare the parity of even and odd, the odd_even_df data 
-frame is formed. 
+Since we only want to compare the parity of even and odd, the odd_even_df data frame is formed.
 
-```
+```         
 #> #A tibble: 2 × 2
 #>  parity count
 #>  <chr>  <int>
@@ -236,24 +236,12 @@ frame is formed.
 #> 2 Odd     2065
 ```
 
-Although there are even integers producing large sequences, it is evident that
-the amount of odd integers (n = 2065) is more than the number of even integers
-(n = 1719). 
+Although there are even integers producing large sequences, it is evident that the amount of odd integers (n = 2065) is more than the number of even integers (n = 1719).
 
-Therefore, the hypothesis of this finding is proven and it is true that odd 
-integers produce larger sequences than even integers. 
+Therefore, the hypothesis of this finding is proven and it is true that odd integers produce larger sequences than even integers.
 
-## 6) Creative visualisation challenge 
+## 6) Creative visualisation challenge
 
-For task 6, we were curious about how it task 5 would show on a graph.
-So, that could be described as how quickly sequences converge to 1 for different
-starting integers or is it Identifying and visualizing the starting integers 
-that produce the longest sequences before reaching 1. And then comparing between 
-the odd and even integers. 
+For task 6, we were curious about how it task 5 would show on a graph. So, that could be described as how quickly sequences converge to 1 for different starting integers or is it Identifying and visualizing the starting integers that produce the longest sequences before reaching 1. And then comparing between the odd and even integers.
 
-
-We also wanted to try if we could try to do an interactive visualisation 
-that could allow for others to explore the Collatz Conjecture by 
-inputting their own starting integers. 
-
-
+We also wanted to try if we could try to do an interactive visualisation that could allow for others to explore the Collatz Conjecture by inputting their own starting integers.
