@@ -377,7 +377,7 @@ ggplot(data = backtracks_df,
 
 Below is the graph:
 
-![](boxplot_03.png)
+![](scatterplot_3.png)
 
 
 Noticeable differences :
