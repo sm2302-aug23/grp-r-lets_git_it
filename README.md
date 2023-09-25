@@ -292,7 +292,46 @@ From the outcome backtracking sequences more common among **odd** than even.
 
 ## 4) Visualisations
 
+1. I have created a scatterplot of all the sequence lengths,where the        horizontal axis is the starting integer and the vertical axis is the      length of the sequence. 
 
+```
+ggplot(
+  data = backtracks_df,
+  mapping = aes(x = start,
+                y = length)
+) + geom_point() +
+  labs(
+    title = "Scatter plot 1",
+    x = "Starting Integers",
+    y = "Length of the sequence"
+  )
+```
+
+ To identify the top 10 starting integers on the above scatterplot:
+```
+top_10_starting_integers_01 <- backtracks_df %>%
+  group_by(start) %>%
+  summarise(total_length = sum(length)) %>%
+  arrange(desc(total_length)) %>%
+  select(start) %>%  
+  head(10)
+
+print(top_10_starting_integers_01)
+```
+
+2. For the second part, since I have to highlight the top 10 starting   integers, we must create a new variable derived from the backtracks_df data frame.
+
+**R CODE**
+
+
+After identifying the top 10 starting integers, we then have to highlight it in 10 distinct colours. 
+
+**R CODE**
+
+
+Finally, we can create the scatterplot, where the horizontal axis is the starting integers and the vertical axis is the maximum value reached in the sequence. 
+
+**R CODE**
 
 
 
