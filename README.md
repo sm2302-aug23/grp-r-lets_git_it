@@ -18,10 +18,10 @@ editor_options:
 -   Task 1: Izznie Adanan
 -   Task 2: Bibi Junaidi
 -   Task 3: Syafiqah Raddin
--   Task 4: @author2
--   Task 5: @author4
+-   Task 4: Syafiqah Raddin, Aqilah Rafidi, Bibi Junaidi
+-   Task 5: Aqilah Rafidi 
 -   Task 6: Izznie Adanan
--   README: @author3
+-   README: Syafiqah Raddin, Izznie Adanan, Aqilah Rafidi, Bibi Junaidi
 
 ### Used packages
 
