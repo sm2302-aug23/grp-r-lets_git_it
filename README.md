@@ -1,11 +1,11 @@
 #### Contribution declaration
 
--   Task 1: @author1
+-   Task 1: Izznie Adanan
 -   Task 2: @author2
 -   Task 3: @author3
 -   Task 4: @author2
 -   Task 5: @author4
--   Task 6: @author1
+-   Task 6: Izznie Adanan 
 -   README: @author3
 
 ### Used packages 
@@ -237,8 +237,15 @@ Therefore, the hypothesis of this finding is proven and it is true that odd inte
 
 ## 6) Creative visualisation challenge 
 
-For task 6, we were curious about how it task 5 would show on a graph. 
+For task 6, we were curious about how it task 5 would show on a graph.
+So, that could be described as how quickly sequences converge to 1 for different
+starting integers or is it Identifying and visualizing the starting integers 
+that produce the longest sequences before reaching 1. And then comparing between 
+the odd and even integers. 
+
 
 We also wanted to try if we could try to do an interactive visualisation 
 that could allow for others to explore the Collatz Conjecture by 
 inputting their own starting integers. 
+
+
