@@ -337,7 +337,7 @@ Output:
 
  Below is graph:
  ![](scatterplot_01.png)
- 
+
 
 
 2. For the second part, since I have to highlight the top 10 starting   integers, we must create a new variable derived from the backtracks_df data frame.
