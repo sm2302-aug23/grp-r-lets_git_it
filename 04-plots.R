@@ -11,27 +11,38 @@ library(dplyr)
 # scatterplot
 
 ggplot(
-  data    = backtracks_df,
+  data = backtracks_df,
   mapping = aes(x = start,
                 y = length)
 ) + geom_point() +
   labs(
     title = "Scatter plot 1",
-    x     = "Starting Integers",
-    y     = "Length of the sequence"
+    x = "Starting Integers",
+    y = "Length of the sequence"
   )
 
 # Identify the top 10 starting integers
 
-top_10_starting_integers <- backtracks_df %>%
+top_10_starting_integers_01 <- backtracks_df %>%
   group_by(start) %>%
   summarise(total_length = sum(length)) %>%
   arrange(desc(total_length)) %>%
+<<<<<<< Updated upstream
   select(start) %>%  
   head(10)
 
 print(top_10_starting_integers)
+=======
+  select(start) %>%
+  head(10)
 
+# Print the top 10 starting integers
+  
+print(top_10_starting_integers_01)
+>>>>>>> Stashed changes
+
+backtracks_df <- backtracks_df %>%
+  mutate(top_10 = start %in% top_10_starting_integers_02$start)
 
 #2 -----------------------------------------------------------------------
 
@@ -48,34 +59,40 @@ top_10_starting_integers_02 <- backtracks_df %>%
 
 print(top_10_starting_integers_02)
 
-# creating a new variable 
-
-backtracks_df <- backtracks_df %>%
-  mutate(top_10 = start %in% top_10_starting_integers_02$start)
-
 # create 10 distinct colours 
 
-colour_palette <- c(
-  "cyan", "pink", "orange", "brown", "violet",
-  "green", "yellow", "blue", "magenta", "cyan4"
-  )
+top_10_colors <- c(
+  "start_int_1" = "pink",
+  "start_int_2" = "cyan4",
+  "start_int_3" = "red",
+  "start_int_4" = "maroon",
+  "start_int_5" = "blue",
+  "start_int_6" = "yellow",
+  "start_int_7" = "gold",
+  "start_int_8" = "violet",
+  "start_int_9" = "brown",
+  "start_int_10" = "green"
+)
 
 # scatterplot 02 
 
 ggplot(
-  data    = backtracks_df,
+  data = backtracks_df,
   mapping = aes(x = start,
                 y = max_val,
-                fill = top_10)
+                color = factor(start, levels = top_10_starting_integers_02$start)
+                )
           
 ) +
-  geom_point() +
-  labs(
-    title    = "Scatter plot 2",
-    x        = "Starting integers",
-    y        = "Maximum value reached in the sequence"
+  geom_point(
+    size = 3
   ) +
-  scale_color_manual( values = c("FALSE" = "gray", "TRUE" = colour_palette))
+  labs(
+    title = "Scatter plot 2",
+    x = "Starting integers",
+    y = "Max value reached in the sequence"
+  ) +
+  scale_color_manual(values = top_10_colors)
 
 
 #3 -----------------------------------------------------------------------
