@@ -1,9 +1,11 @@
-# Task 4 ----------------------------------------------
+# Load libraries ----------------------------------------------------------
 library(tidyverse)
 library(ggplot2)
 library(tibble)
 
+# task 4 -----------------------------------------------------------------
 
+#1 -----------------------------------------------------------------------  
 ggplot(
   data = backtracks_df,
   mapping = aes(x = start,
@@ -27,11 +29,14 @@ top_10_starting_integers <- backtracks_df %>%
 print(top_10_starting_integers)
 
 
-#2 ----------------------------------------------------------
+#2 -----------------------------------------------------------------------
+
+# Create another scatterplot, but this time graph the highest value reached
+# in the sequence on the vertical axis. 
+# Highlight the top 10 starting integers in a different color.
 
 
 
-
-#3 --------------------------------------------------------
+#3 -----------------------------------------------------------------------
 
 # Create a boxplot comparing sequence lengths for even and odd starting integers
