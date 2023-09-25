@@ -17,7 +17,6 @@
 
 ## 1) Generating the Collatz Conjecture 
 
-
 As instructed, I am creating a function 'gen_collatz' to generate the Collatz
 sequence for a given positive integer 'n' and also implementing a safeguard to 
 handle invalid input values (non-positive integers). 
@@ -29,12 +28,14 @@ gen_collatz <- function(n) {
     stop("Input must be a positive integer.")
   }
   
-  # 
+  # Function to generate sequence for a single integer
   collatz_seq <- c(n)
   while (n != 1) {
+  # For even integers
     if (n %% 2 == 0) {
       n <- n / 2
     } else {
+    # For odd integers
       n <- 3 * n + 1
     }
     collatz_seq <- c(collatz_seq, n)
@@ -42,9 +43,11 @@ gen_collatz <- function(n) {
   return(collatz_seq)
 }
 
+# Creating an empty tibble to store results
 collatz_df <- tibble(start = integer(), seq = list(), length = numeric(), 
                      parity = character(), max_val = numeric())
 
+# Using for loop to generate the sequences for integers from 1 to 10,000
 for (i in 1:10000) {
   collatz_seq <- gen_collatz(i)
   collatz_df <- add_row(collatz_df, start = i, seq = list(collatz_seq),
@@ -55,14 +58,48 @@ for (i in 1:10000) {
 head(collatz_df)
 print(collatz_df)
 ``` 
+This would output:
+```
+head(collatz_df)
+# A tibble: 6 × 5
+  start seq       length parity max_val
+  <int> <list>     <dbl> <chr>    <dbl>
+1     1 <int [1]>      1 Odd          1
+2     2 <dbl [2]>      2 Even         2
+3     3 <dbl [8]>      8 Odd         16
+4     4 <dbl [3]>      3 Even         4
+5     5 <dbl [6]>      6 Odd         16
+6     6 <dbl [9]>      9 Even        16
+```
+I realised that this would only show a 6 x 5 tibble. So, 
 
+```
+> print(collatz_df)
+# A tibble: 10,000 × 5
+   start seq        length parity max_val
+   <int> <list>      <dbl> <chr>    <dbl>
+ 1     1 <int [1]>       1 Odd          1
+ 2     2 <dbl [2]>       2 Even         2
+ 3     3 <dbl [8]>       8 Odd         16
+ 4     4 <dbl [3]>       3 Even         4
+ 5     5 <dbl [6]>       6 Odd         16
+ 6     6 <dbl [9]>       9 Even        16
+ 7     7 <dbl [17]>     17 Odd         52
+ 8     8 <dbl [4]>       4 Even         8
+ 9     9 <dbl [20]>     20 Odd         52
+10    10 <dbl [7]>       7 Even        16
+# ℹ 9,990 more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+Now, we finally got the right tibble. 
 ## 2) Exploratory data analysis 
 
 ## 3) Investigating "backtracking" in sequences
 
 1. Creating data frame of backtracking within the collatz sequences :
 
-Filter out any sequence length that has less than 3 sequence since there is no backtracking occurs.
+Filter out any sequence length that has less than 3 sequence since there is no 
+backtracking occurs.
 ```
 has_backtrack <- function(seq) {
   seq_length <- length(seq)
@@ -75,7 +112,8 @@ has_backtrack <- function(seq) {
 
 (i) Iterate through the sequence starting from the second element.
 (ii) The sequence has gone above the starting value more than once.
-(iii) If the loop completes without returning TRUE, it means the condition was not met.
+(iii) If the loop completes without returning TRUE, it means the condition was 
+not met.
 ```
   for (i in 2:(seq_length - 1)) {
     if (seq[i] < seq[1] && seq[i + 1] > seq[i]) {
@@ -123,7 +161,8 @@ backtracks_df
 #> # ℹ 8,219 more rows
 ```
 
-2. The most frequently occurring number of times they go above their starting integer.
+2. The most frequently occurring number of times they go above their starting 
+integer.
 
 ```
 mode_backtrack <- backtracks_df %>%
@@ -166,21 +205,27 @@ Output:
 
 ## 5) Open-ended exploration
 
-For task 5, we analysed the arithmetic progressions in the amount of stopping times of the Collatz Conjecture. 
+For task 5, we analysed the arithmetic progressions in the amount of stopping
+times of the Collatz Conjecture. 
 
-The hypothesis is that the starting integer can affect the number of steps it takes a sequence to reach one.
+The hypothesis is that the starting integer can affect the number of steps it
+takes a sequence to reach one.
 
  1) Odd integers tend to produce a larger sequence.
 
-This is because when an odd integer is multiplied by 3 and added by 1, it becomes larger, resulting in more iterations before reaching 1. 
+This is because when an odd integer is multiplied by 3 and added by 1, it 
+becomes larger, resulting in more iterations before reaching 1. 
 
  2) Even integers tend to produce a smaller sequence. 
 
-This is because when an even integer is divided by 2, it immediately becomes smaller, which can lead to a quicker convergence.
+This is because when an even integer is divided by 2, it immediately becomes 
+smaller, which can lead to a quicker convergence.
 
-Since we want to analyse large sequences, we focused on length of sequences more than 100. Hence, the *length_above_100* data frame. 
+Since we want to analyse large sequences, we focused on length of sequences 
+more than 100. Hence, the *length_above_100* data frame. 
 
-Since we only want to compare the parity of even and odd, the odd_even_df data frame is formed. 
+Since we only want to compare the parity of even and odd, the odd_even_df data
+frame is formed. 
 
 ```
 #> #A tibble: 2 × 2
@@ -190,8 +235,10 @@ Since we only want to compare the parity of even and odd, the odd_even_df data f
 #> 2 Odd     2065
 ```
 
-Although there are even integers producing large sequences, the amount of odd integers (n = 2065) is more than the number of even integers (n = 1719). Therefore, the hypothesis of this finding is proven and it is true that odd integers produces larger sequences compared to even integers. 
-
+Although there are even integers producing large sequences, the amount of odd 
+integers (n = 2065) is more than the number of even integers (n = 1719). 
+Therefore, the hypothesis of this finding is proven and it is true that odd
+integers produces larger sequences compared to even integers. 
 
 ## 6) Creative visualisation challenge 
 
