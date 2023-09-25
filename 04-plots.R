@@ -99,6 +99,7 @@ ggplot(
 #3 -----------------------------------------------------------------------
 
 # Create a boxplot comparing sequence lengths for even and odd starting integers
+backtracks_df$seq_length <- sapply(backtracks_df$seq, length)
 
 ggplot(data = backtracks_df, 
        mapping = aes(x = factor(start %% 2 == 0),
