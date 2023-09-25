@@ -242,6 +242,29 @@ Therefore, the hypothesis of this finding is proven and it is true that odd inte
 
 ## 6) Creative visualisation challenge
 
-For task 6, we were curious about how it task 5 would show on a graph. So, that could be described as how quickly sequences converge to 1 for different starting integers or is it Identifying and visualizing the starting integers that produce the longest sequences before reaching 1. And then comparing between the odd and even integers.
+library(ggplot2)
 
-We also wanted to try if we could try to do an interactive visualisation that could allow for others to explore the Collatz Conjecture by inputting their own starting integers.
+As a continuation from task 5, we wondered how many integers would have 
+a certain amount of sequence length. i.e. how frequent is there a sequence 
+length of 100 or 150. 
+So, that could be described in a histogram to visualize the distribution of
+Collatz sequence lengths for integers with stopping times greater than 100.
+
+```
+ggplot(filtered_collatz_df, aes(x= length)) +
+  geom_histogram(binwidth = 1, fill = "cyan", color = "black") +
+  labs(x = "Sequence Length", y = "Frequency") +
+  ggtitle("Distribution of Sequence Length for Stopping Times >100")
+```
+
+Still taking into consideration task 5, as parity is taken into account, 
+we actually wanted to see odd and even integers compared sequence length. 
+
+```
+ggplot(filtered_collatz_df, aes(x = parity,
+                                y = length,
+                                fill = parity)) +
+  geom_boxplot() +
+  labs(x = "Parity", y = "Sequence Length") +
+  ggtitle("Sequence Lengths by Parity for Stopping Times > 100")
+```
