@@ -63,9 +63,9 @@ odd_even_df <- length_above_100 %>%
 
 print(odd_even_df)
 
-library(ggplot2)
-
 # Task 6 ------------------------------------------------------------------
+
+library(ggplot2)
 
 # As a continuation from task 5, we wondered how many integers would have 
 # a certain amount of sequence length. i.e. how frequent is there a sequence 
