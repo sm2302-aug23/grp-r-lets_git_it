@@ -418,7 +418,7 @@ ggplot(number_counts_long, aes(x = Number,
   ggtitle("Frequency of Specific Numbers in Collatz Sequences") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
-![](heatmap_2to100.png)
+![](heatmap-2to100.png)
 
 I only took into consideration this range because a 2:500 heatmap: 
 ![](heatmap_2to500.png) 
