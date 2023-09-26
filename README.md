@@ -336,6 +336,7 @@ Output:
 ```
 
  Below is the graph:
+ 
  ![](scatterplot_01.png)
 
 
@@ -388,6 +389,9 @@ ggplot(
   scale_color_manual(values = c("FALSE" = "darkgray", "TRUE" = "pink"))
 ```
 
+Below is the graph: 
+
+![](scatterplot_02.png)
 
 
 3.  Create a boxplot comparing the distributions of sequence lengths for
