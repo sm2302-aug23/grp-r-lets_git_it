@@ -50,7 +50,7 @@ print(top_10_starting_integers_02)
 backtracks_df <- backtracks_df %>%
   mutate(top_10 = start %in% top_10_starting_integers_02$start)
 
-# create 10 distinct colours ****IGNORE UNRELATED WILL FIGURE****
+# create 10 distinct colours 
 
 top_10_colors <- c(
   "start_int_1" = "pink",
@@ -80,7 +80,7 @@ ggplot(
   labs(
     title = "Scatter plot 2",
     x = "Starting integers",
-    y = "Maximum value reached in the sequence"
+    y = "Maximum value reached in the sequence",
   ) +
   scale_color_manual(values = c("FALSE" = "darkgray", "TRUE" = "pink"))
 

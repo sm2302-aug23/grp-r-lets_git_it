@@ -352,15 +352,41 @@ top_10_starting_integers_02 <- backtracks_df %>%
 print(top_10_starting_integers_02)
 ```
 
-After identifying the top 10 starting integers, we then have to  highlight it in 10 distinct colours. 
-
-**R CODE**
-
+After identifying the top 10 starting integers, we then have to  highlight it in 10 distinct colours.
+```
+top_10_colors <- c(
+  "start_int_1" = "pink",
+  "start_int_2" = "cyan4",
+  "start_int_3" = "red",
+  "start_int_4" = "maroon",
+  "start_int_5" = "blue",
+  "start_int_6" = "yellow",
+  "start_int_7" = "gold",
+  "start_int_8" = "violet",
+  "start_int_9" = "brown",
+  "start_int_10" = "green"
+)
+```
 
 Finally, we can create the scatterplot, where the horizontal axis is the starting integers and the vertical axis is the maximum value reached in the sequence. 
-
-**R CODE**
-
+```
+ggplot(
+  data = backtracks_df,
+  mapping = aes(x = start,
+                y = max_val,
+                color = top_10)
+          
+) +
+  geom_point(
+    size = 3
+  ) +
+  labs(
+    title = "Scatter plot 2",
+    x = "Starting integers",
+    y = "Maximum value reached in the sequence",
+  ) +
+  scale_color_manual(values = c("FALSE" = "darkgray", "TRUE" = "pink"))
+```
 
 
 
